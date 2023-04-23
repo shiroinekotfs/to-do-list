@@ -51,8 +51,8 @@ def retrieve_database():
 
 if __name__ == "__main__":  
     guiWindow = Tk()  
-    guiWindow.title("To-Do List")  
-    guiWindow.geometry("665x400+550+250")  
+    guiWindow.title("Những việc cần làm")  
+    guiWindow.geometry("665x400+550+50")  
     guiWindow.resizable(0, 0)  
     guiWindow.configure(bg = "#B5E5CF")  
     the_connection = sql.connect('listOfTasks.db')  
@@ -62,7 +62,7 @@ if __name__ == "__main__":
     functions_frame = Frame(guiWindow, bg = "black") 
     functions_frame.pack(side = "top", expand = True, fill = "both")  
  
-    task_label = Label( functions_frame,text = "Enter the Task:",  
+    task_label = Label( functions_frame,text = "Nhập nhiệm vụ:",  
         font = ("arial", "14", "bold"),  
         background = "black", 
         foreground="white"
@@ -80,7 +80,7 @@ if __name__ == "__main__":
   
     add_button =Button(  
         functions_frame,  
-        text = "Add Task",  
+        text = "Thêm nhiệm vụ",  
         width = 15,
         bg='#D4AC0D',font=("arial", "14", "bold"),
         command = them_tac_vu,
@@ -88,14 +88,14 @@ if __name__ == "__main__":
     )  
     del_button = Button(  
         functions_frame,  
-        text = "Delete Task",  
+        text = "Xóa tác vụ",  
         width = 15,
         bg='#D4AC0D', font=("arial", "14", "bold"),
         command = xoa_tac_vu,  
     )  
     del_all_button = Button(  
         functions_frame,  
-        text = "Delete All Tasks",  
+        text = "Xóa tất cả tác vụ",  
         width = 15,
         font=("arial", "14", "bold"),
         bg='#D4AC0D',
@@ -103,11 +103,12 @@ if __name__ == "__main__":
     )  
     exit_button = Button(  
         functions_frame,  
-        text = "Exit",  
+        text = "Thoát",  
         width = 52,
         bg='#D4AC0D',  font=("arial", "14", "bold"),
         command = close  
     )  
+
     add_button.place(x = 18, y = 80,)  
     del_button.place(x = 240, y = 80)  
     del_all_button.place(x = 460, y = 80)  
@@ -129,5 +130,9 @@ if __name__ == "__main__":
     retrieve_database()  
     danh_sach_tac_vu()  
     guiWindow.mainloop()  
-    the_connection.commit()  
-    the_cursor.c
+    the_connection.commit()
+    try: 
+        the_cursor.c
+    except:
+         print("Cleaning up memory...Exiting...")
+         exit()
