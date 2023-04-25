@@ -1,6 +1,7 @@
 ﻿from tkinter import *
 from tkinter import messagebox
 import sqlite3 as sql
+import sys as system
  
 def them_tac_vu():  
     task_string = task_field.get()  
@@ -134,5 +135,4 @@ if __name__ == "__main__":
     try: 
         the_cursor.c
     except:
-         print("Cleaning up memory...Exiting...")
-         exit()
+        system.exit(1)
