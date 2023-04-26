@@ -11,7 +11,8 @@
     <OutputPath>.</OutputPath>
     <Name>To-Do List</Name>
     <RootNamespace>To-Do List</RootNamespace>
-    <InterpreterId>CondaEnv|CondaEnv|todolist</InterpreterId>
+    <InterpreterId>
+    </InterpreterId>
     <SuppressEnvironmentCreationPrompt>True</SuppressEnvironmentCreationPrompt>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
@@ -26,7 +27,7 @@
     <Compile Include="To_Do_List.py" />
   </ItemGroup>
   <ItemGroup>
-    <InterpreterReference Include="CondaEnv|CondaEnv|todolist" />
+    <Content Include="requirements.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
   <!-- Uncomment the CoreCompile target to enable the Build command in

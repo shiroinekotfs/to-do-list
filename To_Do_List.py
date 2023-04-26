@@ -3,6 +3,15 @@ from tkinter import messagebox
 import sqlite3 as sql
 import sys as system
  
+def xuat_ra_file():
+     try:
+         f = open("list.txt", "a")
+         for task_list in tasks:
+             f.write(task_list + "\n")
+         f.close()
+     except:
+         messagebox.showinfo('Lỗi', 'Tệp không thể được ghi hoặc không có đầu việc trong cơ sở dữ liệu')
+
 def them_tac_vu():  
     task_string = task_field.get()  
     if len(task_string) == 0:  
@@ -42,21 +51,21 @@ def xoa_danh_sach():
   
 def close():  
     print(tasks)  
-    guiWindow.destroy()  
-
-def retrieve_database():  
+    guiWindow.destroy()
+    
+def doc_co_so_du_lieu():  
     while(len(tasks) != 0):  
         tasks.pop()  
     for row in the_cursor.execute('select title from tasks'):  
-        tasks.append(row[0])  
+        tasks.append(row[0])
 
 if __name__ == "__main__":  
     guiWindow = Tk()  
     guiWindow.title("Những việc cần làm")  
-    guiWindow.geometry("665x400+550+50")  
+    guiWindow.geometry("870x400+550+50")  
     guiWindow.resizable(0, 0)  
     guiWindow.configure(bg = "#B5E5CF")  
-    the_connection = sql.connect('listOfTasks.db')  
+    the_connection = sql.connect('listOfTasks.db')
     the_cursor = the_connection.cursor()  
     the_cursor.execute('create table if not exists tasks (title text)')  
     tasks = []  
@@ -67,13 +76,14 @@ if __name__ == "__main__":
         font = ("arial", "14", "bold"),  
         background = "black", 
         foreground="white"
-    )  
+    )
+
     task_label.place(x = 20, y = 30)  
       
     task_field = Entry(  
         functions_frame,  
         font = ("Arial", "14"),  
-        width = 42,  
+        width = 61,  
         foreground="black",
         background = "white",  
     )  
@@ -94,6 +104,7 @@ if __name__ == "__main__":
         bg='#D4AC0D', font=("arial", "14", "bold"),
         command = xoa_tac_vu,  
     )  
+    
     del_all_button = Button(  
         functions_frame,  
         text = "Xóa tất cả tác vụ",  
@@ -102,22 +113,33 @@ if __name__ == "__main__":
         bg='#D4AC0D',
         command = xoa_tat_ca  
     )  
+
+    export_file = Button(
+        functions_frame,  
+        text = "Xuất txt",  
+        width = 15,
+        font=("arial", "14", "bold"),
+        bg='#D4AC0D',
+        command = xuat_ra_file
+    )
+
     exit_button = Button(  
         functions_frame,  
         text = "Thoát",  
-        width = 52,
+        width = 69,
         bg='#D4AC0D',  font=("arial", "14", "bold"),
         command = close  
     )  
 
-    add_button.place(x = 18, y = 80,)  
+    add_button.place(x = 10, y = 80,)  
     del_button.place(x = 240, y = 80)  
     del_all_button.place(x = 460, y = 80)  
-    exit_button.place(x = 17, y = 330)  
+    exit_button.place(x = 10, y = 330)  
+    export_file.place(x = 670 , y = 80)
   
     task_listbox = Listbox(  
         functions_frame,  
-        width = 57,  
+        width = 92,  
         height = 7,  
         font="bold",
         selectmode = 'SINGLE',  
@@ -128,8 +150,8 @@ if __name__ == "__main__":
     )  
 
     task_listbox.place(x = 17, y = 140)  
-    retrieve_database()  
-    danh_sach_tac_vu()  
+    doc_co_so_du_lieu()  
+    danh_sach_tac_vu()
     guiWindow.mainloop()  
     the_connection.commit()
     try: 
