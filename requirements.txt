@@ -20,4 +20,4 @@ tk==0.1.0
 whichcraft==0.6.1
 zope.event==4.6
 zope.interface==6.0
-pyinstaller
+PyInstaller

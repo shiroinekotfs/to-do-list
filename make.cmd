@@ -14,12 +14,10 @@ python -m pip install -r "%~dp0requirements.txt"
 set ECHO
 ::Creating the executable
 echo Creating the executable...
-python -m pyinstaller --noconfirm --onefile --windowed --icon "%~dp0media/icon.ico" "%~dp0To_Do_List.py"
-pause
+python -m PyInstaller --noconfirm --onefile --windowed --icon "%~dp0media/icon.ico" "%~dp0To_Do_List.py"
 goto copybin
 
 :copybin
 move "%~dp0dist\To_Do_List.exe" "%~dp0To_Do_List.exe"
 rd "%~dp0build" /s /q
 rd "%~dp0dist" /s /q
-pause

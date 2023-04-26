@@ -5,7 +5,7 @@ block_cipher = None
 
 
 a = Analysis(
-    ['D:\\#source-code\\invidual\\to-do-list\\To_Do_List.py'],
+    ['F:\\#source-code\\invidual\\to-do-list\\To_Do_List.py'],
     pathex=[],
     binaries=[],
     datas=[],
@@ -41,5 +41,5 @@ exe = EXE(
     target_arch=None,
     codesign_identity=None,
     entitlements_file=None,
-    icon=['D:\\#source-code\\invidual\\to-do-list\\media\\icon.ico'],
+    icon=['F:\\#source-code\\invidual\\to-do-list\\media\\icon.ico'],
 )
