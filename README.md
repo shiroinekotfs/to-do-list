@@ -29,7 +29,7 @@ Sau khi tạo, tệp sẽ có tên là `To_Do_List.exe`
 
 ## Tải về & Sử dụng
 
-### Tải về [ở đây](https://github.com/takineko-tfs/to-do-list/releases)
+### Tải về [ở đây](https://github.com/shiroineko-tfs/to-do-list/releases)
 
 ### Sử dụng
 
