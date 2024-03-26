@@ -9,7 +9,7 @@ gevent==22.10.2
 gevent-websocket==0.10.1
 greenlet==2.0.2
 pefile==2023.2.7
-pip==22.0.4
+pip==23.3
 pycparser==2.21
 pyinstaller==5.10.1
 pyinstaller-hooks-contrib==2023.2
